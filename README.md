@@ -1,2 +1,23 @@
-# docker-hello-world
-Image to test Docker deployments. Has .NET Core app with a 'Hello World' page listening in port 80.
+# Docker Hello World
+The Docker image based on [tutum/hello-world](https://hub.docker.com/r/tutum/hello-world/) concept. This is a very basic Hello World image that we use to test the Automated build of the Dockerfile and the auto deployment of the updated container.
+
+## Usage
+To create the image `dariuszporowski/hello-world`, execute the following command on the src folder:
+```bash
+docker build -t dariuszporowski/hello-world .
+```
+
+You can now push your new image to the registry:
+```bash
+docker push dariuszporowski/hello-world
+```
+
+## Running your Hello World docker image
+Start your image:
+```bash
+docker run -it --rm -p 8080:80 dariuszporowski/hello-world
+```
+
+Browse to [http://localhost:8080](http://localhost:8080) to view the web page with container hostname served by hello-world app in the running container. You should see a page similar to the following:
+
+![hello-world](docker-hello-world.png)

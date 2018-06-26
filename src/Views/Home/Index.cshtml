@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello @(ViewData["NAME"] == null ? "World" : ViewData["NAME"].ToString()) from Docker Container!</title>
+        <style>
+            body {
+                background-color: white;
+                text-align: center;
+                padding: 50px;
+                font-family: "Segoe UI",Helvetica,Arial,sans-serif;
+            }
+
+            #logo {
+                margin-bottom: 40px;
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <img id="logo" src="/images/dotnetcore.svg">
+        <h1>Hello @(ViewData["NAME"] == null ? "World!" : ViewData["NAME"].ToString())</h1>
+        @if (!string.IsNullOrEmpty(ViewData["HOSTNAME"].ToString()))
+        {
+            <h3>My hostname is @ViewData["HOSTNAME"]</h3>
+        }
+    </body>
+</html>
