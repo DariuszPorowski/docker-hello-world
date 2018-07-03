@@ -1,14 +1,14 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime-alpine AS base
-LABEL maintainer="Dariusz.Porowski@microsoft.com"
-COPY ./entrypoint.sh /
+LABEL maintainer="Dariusz Porowski <Dariusz.Porowski@microsoft.com>"
+COPY sshd_config /etc/ssh/
+COPY init_container.sh /bin/
 RUN apk add --no-cache openssh-server \
-	&& sed -i s/#PermitRootLogin.*/PermitRootLogin\ yes/ /etc/ssh/sshd_config \
 	&& echo "root:Docker!" | chpasswd \
 	&& apk update \
 	&& apk add --no-cache openrc \
 	&& rc-status \
 	&& touch /run/openrc/softlevel \
-	&& chmod +x /entrypoint.sh \
+	&& chmod +x /bin/init_container.sh \
 	&& rm -rf /var/cache/apk/* /tmp/*
 WORKDIR /app
 EXPOSE 80 2222
@@ -23,4 +23,4 @@ RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 COPY --from=publish /app .
-ENTRYPOINT ["/entrypoint.sh", "dotnet", "docker-hello-world.dll"]
+ENTRYPOINT ["/bin/init_container.sh", "dotnet", "docker-hello-world.dll"]
