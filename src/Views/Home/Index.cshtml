@@ -23,7 +23,7 @@
     </head>
     <body>
         <img id="logo" src="/images/dotnetcore.svg">
-        <h1>Hello @(ViewData["NAME"] == null ? "World!" : ViewData["NAME"].ToString())</h1>
+        <h1>Hello @(ViewData["NAME"] == null ? "World" : ViewData["NAME"].ToString())!</h1>
         @if (!string.IsNullOrEmpty(ViewData["HOSTNAME"].ToString()))
         {
             <h3>My hostname is @ViewData["HOSTNAME"]</h3>

@@ -1,8 +1,8 @@
 # Docker Hello World
-The Docker image based on [tutum/hello-world](https://hub.docker.com/r/tutum/hello-world/) concept. This is a very basic Hello World image that we use to test the Automated build of the Dockerfile and the auto deployment of the updated container.
+The Docker image based on [tutum/hello-world](https://hub.docker.com/r/tutum/hello-world/) concept. This is a very basic *Hello World* image that we use to test deployments.
 
 ## Usage
-To create the image `dariuszporowski/hello-world`, execute the following command on the src folder:
+To create the image [dariuszporowski/hello-world](https://hub.docker.com/r/dariuszporowski/hello-world/), execute the following command on the src folder:
 ```bash
 docker build -t dariuszporowski/hello-world .
 ```
